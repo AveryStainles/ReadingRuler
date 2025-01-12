@@ -11,7 +11,7 @@
         WindowStyle="None"
         Topmost="True"
         Background="Transparent"
-        Height="200" Width="1920"
+        Height="200" Width="1600"
         MouseDown="Window_MouseDown">
 
     <Grid x:Name="grid">
@@ -93,7 +93,7 @@
                  Grid.Row="3"
                  Visibility="Collapsed"
                  Height="20" 
-                 Width="45"
+                 Width="50"
                  Text="#007F00"
                  Margin="295,0,0,0" 
                  HorizontalAlignment="Left"/>
@@ -125,7 +125,7 @@
                 Content="Apply Changes"
                 Margin="0,0,10,0" 
                 VerticalAlignment="Center"
-                HorizontalAlignment="Right" Click="ApplyChanges"/>
+                HorizontalAlignment="Right" Click="ApplySettingsUpdate"/>
 
     </Grid>
 </Window>
