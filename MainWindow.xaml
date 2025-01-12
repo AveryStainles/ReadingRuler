@@ -1,0 +1,156 @@
+﻿<Window x:Class="ReadingRuler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReadingRuler"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        x:Name="window"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        Height="200" Width="1920"
+        Topmost="True"
+        MouseDown="Window_MouseDown">
+
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Fill="Green"/>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="Transparent"/>
+        <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Fill="Green"/>
+        <Rectangle Grid.Row="3" Grid.ColumnSpan="2" Fill="Green" x:Name="menuOptions" Visibility="Collapsed"/>
+
+        <!--Toggle Option Menu View-->
+
+        <Button x:Name="toggleOptions"
+                Grid.Row="2" 
+                Height="30" 
+                Width="30" 
+                Margin="0, 0, 10, 0"
+                Grid.Column="1" 
+                HorizontalAlignment="Right"
+                Click="ToggleOptionMenu"/>
+
+
+        <!--Ruler Gap-->
+
+        <Label x:Name="rulerGapLabel"
+               Grid.Row="3"
+               Visibility="Collapsed"
+               Content="Ruler Gap:"
+               Margin="10,10,0,0" />
+
+        <TextBox x:Name="rulerGapTextBox" 
+                 Grid.Row="3"
+                 Visibility="Collapsed"
+                 Height="20" 
+                 Width="40"
+                 Text="1920"   
+                 Margin="75,0,0,0" 
+                 HorizontalAlignment="Left"/>
+
+        <!--Ruler Body-->
+
+        <Label x:Name="rulerBodyLabel"
+               Grid.Row="3"
+               Visibility="Collapsed"
+               Content="Ruler Body:"
+               Margin="130,10,0,0" />
+
+        <TextBox x:Name="rulerBodyTextBox" 
+                 Grid.Row="3"
+                 Visibility="Collapsed"
+                 Height="20" 
+                 Width="40"
+                 Text="1920"   
+                 Margin="200,0,0,0" 
+                 HorizontalAlignment="Left"/>
+
+
+        <!--Setting RGBA value for body-->
+
+        <Label x:Name="rgbaLabel"
+               Grid.Row="3"
+               Visibility="Collapsed"
+               Content="RGBA:"
+               Margin="250,10,0,0" />
+
+        <TextBox x:Name="rgbaBody" 
+                 Grid.Row="3"
+                 Visibility="Collapsed"
+                 Height="20" 
+                 Width="40"
+                 Text="1920"
+                 Margin="295,0,0,0" 
+                 HorizontalAlignment="Left"/>
+
+
+        <!--Setting Width of Ruler-->
+
+        <Label x:Name="widthRulerLabel"
+               Grid.Row="3"
+               Visibility="Collapsed"
+               Content="Width of Ruler:"
+               Margin="345,10,0,0" />
+
+        <TextBox x:Name="widthRulerBody" 
+                 Grid.Row="3"
+                 Visibility="Collapsed"
+                 Height="20" 
+                 Width="40"
+                 Text="1920"
+                 Margin="435,0,0,0" 
+                 HorizontalAlignment="Left"/>
+
+        <!--Setting Height of Ruler-->
+
+        <Label x:Name="heightRulerLabel"
+               Grid.Row="3"
+               Visibility="Collapsed"
+               Content="Heigh of Ruler:"
+               Margin="485,10,0,0" />
+
+        <TextBox x:Name="heightRulerBody" 
+                 Grid.Row="3"
+                 Visibility="Collapsed"
+                 Height="20" 
+                 Width="40"
+                 Text="1920"
+                 Margin="575,0,0,0" 
+                 HorizontalAlignment="Left"/>
+
+        <!--Toggle Always on top-->
+
+        <Label x:Name="alwaysOnTopLabel"
+               Grid.Row="3"
+               Visibility="Collapsed"
+               Content="Always on top:"
+               Margin="625,10,0,0" />
+
+        <CheckBox x:Name="alwaysOnTopCheckBox" 
+                     Grid.Row="3"
+                     Visibility="Collapsed"
+                     Margin="715,0,0,0" 
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"/>
+
+        <!-- Apply Settings-->
+
+        <Button x:Name="applyBtn" 
+                Grid.Row="3"
+                Visibility="Collapsed"
+                Content="Apply Changes"
+                Margin="0,0,10,0" 
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right" Click="ApplyChanges"/>
+
+    </Grid>
+</Window>
