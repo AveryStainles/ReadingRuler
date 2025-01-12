@@ -9,9 +9,9 @@
         x:Name="window"
         AllowsTransparency="True"
         WindowStyle="None"
+        Topmost="True"
         Background="Transparent"
         Height="200" Width="1920"
-        Topmost="True"
         MouseDown="Window_MouseDown">
 
     <Grid x:Name="grid">
@@ -23,10 +23,10 @@
         </Grid.RowDefinitions>
 
 
-        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Fill="Green"/>
-        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="Transparent"/>
-        <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Fill="Green"/>
-        <Rectangle Grid.Row="3" Grid.ColumnSpan="2" Fill="Green" x:Name="menuOptions" Visibility="Collapsed"/>
+        <Rectangle Grid.Row="0" x:Name="row0" Fill="Green"/>
+        <Rectangle Grid.Row="1" x:Name="row1"  Fill="Transparent"/>
+        <Rectangle Grid.Row="2" x:Name="row2" Fill="Green"/>
+        <Rectangle Grid.Row="3" Fill="Green" x:Name="menuOptions" Visibility="Collapsed"/>
 
         <!--Toggle Option Menu View-->
 
@@ -53,7 +53,7 @@
                  Visibility="Collapsed"
                  Height="20" 
                  Width="40"
-                 Text="1920"   
+                 Text="50"   
                  Margin="75,0,0,0" 
                  HorizontalAlignment="Left"/>
 
@@ -70,7 +70,7 @@
                  Visibility="Collapsed"
                  Height="20" 
                  Width="40"
-                 Text="1920"   
+                 Text="50"   
                  Margin="200,0,0,0" 
                  HorizontalAlignment="Left"/>
 
@@ -87,8 +87,8 @@
                  Grid.Row="3"
                  Visibility="Collapsed"
                  Height="20" 
-                 Width="40"
-                 Text="1920"
+                 Width="45"
+                 Text="000"
                  Margin="295,0,0,0" 
                  HorizontalAlignment="Left"/>
 
@@ -99,7 +99,7 @@
                Grid.Row="3"
                Visibility="Collapsed"
                Content="Width of Ruler:"
-               Margin="345,10,0,0" />
+               Margin="350,10,0,0" />
 
         <TextBox x:Name="widthRulerBody" 
                  Grid.Row="3"
@@ -107,40 +107,9 @@
                  Height="20" 
                  Width="40"
                  Text="1920"
-                 Margin="435,0,0,0" 
+                 Margin="405,0,0,0" 
                  HorizontalAlignment="Left"/>
 
-        <!--Setting Height of Ruler-->
-
-        <Label x:Name="heightRulerLabel"
-               Grid.Row="3"
-               Visibility="Collapsed"
-               Content="Heigh of Ruler:"
-               Margin="485,10,0,0" />
-
-        <TextBox x:Name="heightRulerBody" 
-                 Grid.Row="3"
-                 Visibility="Collapsed"
-                 Height="20" 
-                 Width="40"
-                 Text="1920"
-                 Margin="575,0,0,0" 
-                 HorizontalAlignment="Left"/>
-
-        <!--Toggle Always on top-->
-
-        <Label x:Name="alwaysOnTopLabel"
-               Grid.Row="3"
-               Visibility="Collapsed"
-               Content="Always on top:"
-               Margin="625,10,0,0" />
-
-        <CheckBox x:Name="alwaysOnTopCheckBox" 
-                     Grid.Row="3"
-                     Visibility="Collapsed"
-                     Margin="715,0,0,0" 
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Left"/>
 
         <!-- Apply Settings-->
 

@@ -1,14 +1,8 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace ReadingRuler
 {
@@ -40,16 +34,28 @@ namespace ReadingRuler
         // Apply changes button is pressed, get all the input fields and set the settings to match them
         private void ApplyChanges(object sender, RoutedEventArgs e)
         {
-            if (!_regex.IsMatch(rulerGapTextBox.Text))
+            // Validates all values are numbers
+            if (_regex.IsMatch(rulerGapTextBox.Text) && _regex.IsMatch(rulerBodyTextBox.Text) && _regex.IsMatch(widthRulerBody.Text) /* TODO Add regex for RBGA texbox */)
             {
-                var newRowHeight = new GridLength(Double.Parse(rulerGapTextBox.Text), GridUnitType.Pixel);
-                grid.RowDefinitions[0].Height = new GridLength(50, GridUnitType.Pixel);
-                grid.RowDefinitions[1].Height = newRowHeight;
-                grid.RowDefinitions[2].Height = new GridLength(50, GridUnitType.Pixel);
-                grid.RowDefinitions[3].Height = new GridLength(50, GridUnitType.Pixel);
-
-                window.Height = grid.RowDefinitions[0].Height.Value + grid.RowDefinitions[1].Height.Value + grid.RowDefinitions[2].Height.Value + grid.RowDefinitions[3].Height.Value;
+                return;
             }
+
+            var rowGapHeight = new GridLength(Double.Parse(rulerGapTextBox.Text), GridUnitType.Pixel);
+            var rowBodyHeight = new GridLength(Double.Parse(rulerBodyTextBox.Text), GridUnitType.Pixel);
+            grid.RowDefinitions[0].Height = (rowBodyHeight.Value > 10) ? rowBodyHeight : new GridLength(10, GridUnitType.Pixel);
+            grid.RowDefinitions[1].Height = (rowGapHeight.Value > 10) ? rowGapHeight : new GridLength(10, GridUnitType.Pixel);
+            grid.RowDefinitions[2].Height = (rowBodyHeight.Value > 10) ? rowBodyHeight : new GridLength(10, GridUnitType.Pixel);
+            grid.RowDefinitions[3].Height = new GridLength(50, GridUnitType.Pixel);
+            grid.Width = (Double.Parse(widthRulerBody.Text) > 700) ? Double.Parse(widthRulerBody.Text) : 700;
+            window.Height = grid.RowDefinitions[0].Height.Value + grid.RowDefinitions[1].Height.Value + grid.RowDefinitions[2].Height.Value + grid.RowDefinitions[3].Height.Value;
+
+
+            var brush = (Brush) new BrushConverter().ConvertFromString(rgbaBody.Text);
+            row0.Fill = brush;
+            row2.Fill = brush;
+            menuOptions.Fill = brush;
+
+
         }
 
         private void ToggleVisibility()
@@ -66,10 +72,6 @@ namespace ReadingRuler
             rgbaBody.Visibility = visibility;
             widthRulerLabel.Visibility = visibility;
             widthRulerBody.Visibility = visibility;
-            heightRulerLabel.Visibility = visibility;
-            heightRulerBody.Visibility = visibility;
-            alwaysOnTopLabel.Visibility = visibility;
-            alwaysOnTopCheckBox.Visibility = visibility;
             applyBtn.Visibility = visibility;
         }
     }
