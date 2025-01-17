@@ -3,129 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:ReadingRuler"
         mc:Ignorable="d"
         Title="MainWindow" 
         x:Name="window"
+        ResizeMode="CanResizeWithGrip"
+        MinHeight="150"
+        MinWidth="700"
+        
         AllowsTransparency="True"
         WindowStyle="None"
         Topmost="True"
         Background="Transparent"
-        Height="200" Width="1600"
         MouseDown="Window_MouseDown">
 
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition MinHeight="50"/>
+            <RowDefinition MinHeight="0"/>
+            <RowDefinition MinHeight="50" />
         </Grid.RowDefinitions>
 
 
-        <Rectangle Grid.Row="0" x:Name="row0" Fill="Green"/>
+        <Rectangle Grid.Row="0" x:Name="row0" Fill="Green" MouseWheel="ChangeRulerBodySize"/>
         <Rectangle Grid.Row="1" x:Name="row1"  Fill="Transparent"/>
-        <Rectangle Grid.Row="2" x:Name="row2" Fill="Green"/>
-        <Rectangle Grid.Row="3" Fill="Green" x:Name="menuOptions" Visibility="Collapsed"/>
+        <Rectangle Grid.Row="2" x:Name="row2" Fill="Green" MouseWheel="ChangeRulerBodySize"/>
 
-        <!--Toggle Option Menu View-->
-
-        <Button x:Name="toggleOptions"
-                Grid.Row="2" 
-                Height="30" 
-                Width="30" 
-                Margin="0, 0, 10, 0"
-                Grid.Column="1" 
-                HorizontalAlignment="Right"
-                Click="ToggleOptionMenu"/>
-        
-        <!--Error Message-->
-        <Label x:Name="errorLabel"
-               Grid.Row="0"
-               Visibility="Collapsed"
-               Foreground="Red"/>
-
-
-        <!--Ruler Gap-->
-
-        <Label x:Name="rulerGapLabel"
-               Grid.Row="3"
-               Visibility="Collapsed"
-               Content="Ruler Gap:"
-               Margin="10,10,0,0" />
-
-        <TextBox x:Name="rulerGapTextBox" 
-                 Grid.Row="3"
-                 Visibility="Collapsed"
-                 Height="20" 
-                 Width="40"
-                 Text="50"   
-                 Margin="75,0,0,0" 
-                 HorizontalAlignment="Left"/>
-
-        <!--Ruler Body-->
-
-        <Label x:Name="rulerBodyLabel"
-               Grid.Row="3"
-               Visibility="Collapsed"
-               Content="Ruler Body:"
-               Margin="130,10,0,0" />
-
-        <TextBox x:Name="rulerBodyTextBox" 
-                 Grid.Row="3"
-                 Visibility="Collapsed"
-                 Height="20" 
-                 Width="40"
-                 Text="50"   
-                 Margin="200,0,0,0" 
-                 HorizontalAlignment="Left"/>
-
-
-        <!--Setting RGBA value for body-->
-
-        <Label x:Name="rgbaLabel"
-               Grid.Row="3"
-               Visibility="Collapsed"
-               Content="RGBA:"
-               Margin="250,10,0,0" />
-
-        <TextBox x:Name="rgbaBody" 
-                 Grid.Row="3"
-                 Visibility="Collapsed"
-                 Height="20" 
-                 Width="50"
-                 Text="#007F00"
-                 Margin="295,0,0,0" 
-                 HorizontalAlignment="Left"/>
-
-
-        <!--Setting Width of Ruler-->
-
-        <Label x:Name="widthRulerLabel"
-               Grid.Row="3"
-               Visibility="Collapsed"
-               Content="Width of Ruler:"
-               Margin="350,10,0,0" />
-
-        <TextBox x:Name="widthRulerBody" 
-                 Grid.Row="3"
-                 Visibility="Collapsed"
-                 Height="20" 
-                 Width="40"
-                 Text="1920"
-                 Margin="440,0,0,0" 
-                 HorizontalAlignment="Left"/>
-
-
-        <!-- Apply Settings-->
-
-        <Button x:Name="applyBtn" 
-                Grid.Row="3"
-                Visibility="Collapsed"
-                Content="Apply Changes"
-                Margin="0,0,10,0" 
-                VerticalAlignment="Center"
-                HorizontalAlignment="Right" Click="ApplySettingsUpdate"/>
+        <!--Colour Picker-->
+        <xctk:ColorPicker x:Name="ClrPicker"
+                          Height="30" 
+                          Width="45" 
+                          Margin="0, 0, 10, 0"
+                          HorizontalAlignment="Right" 
+                          Background="Green"
+                          ColorMode="ColorCanvas"
+                          SelectedColorChanged="ClrPicker_SelectedColorChanged"/>
 
     </Grid>
 </Window>
